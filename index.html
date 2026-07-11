@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For 김규민 ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Animasi hati -->
+    <div class="hearts"></div>
+
+    <div class="container">
+
+        <!-- Foto -->
+        <img src="profile.jpg" alt="Profile" class="profile">
+
+        <h1>김규민 ❤️</h1>
+
+        <h2>규민아</h2>
+
+        <p>
+            너를 만난 건<br><br>
+
+            내 인생에서 가장 특별한 일이야.<br><br>
+
+            네가 웃는 모습,<br>
+            나를 생각해주는 마음,<br>
+            모든 순간이 나에게 소중해.<br><br>
+
+            앞으로도 너와 함께
+            많은 추억을 만들고 싶어.<br><br>
+
+            항상 내 곁에 있어줘서 고마워.<br><br>
+
+            사랑해, 김규민 ❤️
+        </p>
+
+        <button onclick="showLove()">
+            ❤️ I LOVE YOU ❤️
+        </button>
+
+        <div id="loveMessage"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Noto Sans KR',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ffd6e8,#ffeef6);
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:500px;
+    background:rgba(255,255,255,.9);
+    border-radius:25px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+    animation:fadeUp 1.2s ease;
+}
+
+.profile{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    border:6px solid white;
+    box-shadow:0 0 30px hotpink;
+    margin-bottom:20px;
+    animation:float 3s ease-in-out infinite;
+}
+
+h1{
+    color:#ff2f7a;
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+h2{
+    color:#ff6ea9;
+    margin-bottom:20px;
+}
+
+p{
+    color:#555;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+button{
+    background:#ff4f95;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:50px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+    background:#ff2f7a;
+}
+
+#loveMessage{
+    margin-top:20px;
+    color:#ff2f7a;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.heart{
+    position:absolute;
+    color:#ff5b9a;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-10vh);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+// Tombol I LOVE YOU
+function showLove() {
+    const message = document.getElementById("loveMessage");
+
+    message.innerHTML = `
+    사랑해 ❤️<br>
+    항상 네 곁에 있을게.<br><br>
+    Forever With You 💖
+    `;
+
+    message.animate(
+        [
+            { transform: "scale(0.5)", opacity: 0 },
+            { transform: "scale(1.1)", opacity: 1 },
+            { transform: "scale(1)", opacity: 1 }
+        ],
+        {
+            duration: 600,
+            fill: "forwards"
+        }
+    );
+}
+
+// Animasi hati berjatuhan
+const hearts = document.querySelector(".hearts");
+
+function createHeart() {
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 25) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+    hearts.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+// Membuat hati baru setiap 250 ms
+setInterval(createHeart, 250);
+
+
+<div class="buttons">
+    <button id="yesBtn" onclick="showLove()">❤️ YES ❤️</button>
+    <button id="noBtn">💔 NO</button>
+</div>
+
+<h2 id="teaseText"></h2>
+
+<div id="loveMessage"></div>
+
+.buttons{
+    position:relative;
+    width:340px;
+    height:220px;
+    margin:30px auto;
+}
+
+#yesBtn,#noBtn{
+    position:absolute;
+    padding:15px 35px;
+    border:none;
+    border-radius:50px;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#yesBtn{
+    left:20px;
+    top:70px;
+    background:#ff4f95;
+    color:white;
+}
+
+#noBtn{
+    left:200px;
+    top:70px;
+    background:#888;
+    color:white;
+}
+
+#teaseText{
+    color:#ff2f7a;
+    margin-top:15px;
+    min-height:40px;
+}
+
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const text = document.getElementById("teaseText");
+const box = document.querySelector(".buttons");
+
+let scale = 1;
+
+const messages = [
+    "정말 '아니'를 누를 거야? 🥺",
+    "도망갈 수 없어! ❤️",
+    "한 번만 '네'를 눌러줘 💕",
+    "사랑은 이길 수 없어 💖",
+    "'아니'는 선택할 수 없어 😆",
+    "다시 생각해 봐 🌸",
+    "'네'를 누르면 행복해질 거야 ❤️",
+    "난 널 사랑해 🥰"
+];
+
+function moveNo() {
+
+    const maxX = box.clientWidth - noBtn.offsetWidth;
+    const maxY = box.clientHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    scale += 0.15;
+    yesBtn.style.transform = `scale(${scale})`;
+
+    text.innerHTML = messages[Math.floor(Math.random() * messages.length)];
+}
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("click", moveNo);
+noBtn.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moveNo();
+});
+
+function showLove(){
+
+    document.getElementById("loveMessage").innerHTML = `
+        ❤️ 사랑해 ❤️<br><br>
+        너는 내 세상에서 가장 소중한 사람이야.<br><br>
+        평생 너만 사랑할게. 💍
+    `;
+
+    if(typeof music !== "undefined"){
+        music.play();
+    }
+
+    for(let i=0;i<40;i++){
+        createExplosion();
+    }
+
+    document.body.style.background =
+    "linear-gradient(135deg,#ff9ac8,#ffe6f2)";
+}
+
+<img src="profile.jpg" alt="프로필 사진" class="profile">
+
